@@ -1,0 +1,20 @@
+https://s3-us-west-2.amazonaws.com/studentapi-cit
+
+<Resource name="jdbc/TestDB" auth="Container" type="javax.sql.DataSource"
+           maxTotal="500" maxIdle="30" maxWaitMillis="1000"
+           username="admin" password="9JUO#bL19iOn1vD" driverClassName="com.mysql.jdbc.Driver"
+           url="jdbc:mysql://database-1.cxtqpl5bdh0s.us-east-1.rds.amazonaws.com:3306/studentapp?useUnicode=yes&amp;characterEncoding=utf8"/>
+
+mysql -h hostname -u admin -p
+
+CREATE DATABASE studentapp;
+use studentapp;
+CREATE TABLE if not exists students(student_id INT NOT NULL AUTO_INCREMENT,
+	student_name VARCHAR(100) NOT NULL,
+    student_addr VARCHAR(100) NOT NULL,
+	student_age VARCHAR(3) NOT NULL,
+	student_qual VARCHAR(20) NOT NULL,
+	student_percent VARCHAR(10) NOT NULL,
+	student_year_passed VARCHAR(10) NOT NULL,
+	PRIMARY KEY (student_id)
+);
