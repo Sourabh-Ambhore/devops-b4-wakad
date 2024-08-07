@@ -16,9 +16,9 @@ resource "aws_internet_gateway" "igw-for-dev-vpc" {
 }
 
 resource "aws_subnet" "public_subnet" {
-  vpc_id     = aws_vpc.vpc_for_dev.id
-  count = length(var.cidr_block_for_public_subnets)
-  cidr_block = var.cidr_block_for_public_subnets[count.index]
+  vpc_id                  = aws_vpc.vpc_for_dev.id
+  count                   = length(var.cidr_block_for_public_subnets)
+  cidr_block              = var.cidr_block_for_public_subnets[count.index]
   map_public_ip_on_launch = var.map_public_ip
 
   tags = {
@@ -28,11 +28,13 @@ resource "aws_subnet" "public_subnet" {
 
 resource "aws_subnet" "private_subnet" {
   vpc_id     = aws_vpc.vpc_for_dev.id
-  count = length(var.cidr_block_for_private_subnets) 
+  count      = length(var.cidr_block_for_private_subnets)
   cidr_block = var.cidr_block_for_private_subnets[count.index]
 
-  tags = {
-    Name = "private-subnet-${count.index}"
-  }
+    tags = merge(
+    { Name = "private-subnet-test-${count.index}" }, 
+    var.additional_tags
+  )
+  
 }
 

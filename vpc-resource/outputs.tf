@@ -9,7 +9,7 @@ output "igw" {
 
 # output "subnets" {
 #   value = aws_subnet.public_subnet
-  
+
 # }
 
 # output "subnet_private" {
