@@ -22,12 +22,17 @@ variable "igw_for_dev_vpc" {
   description = "interet gateway for dev-vpc"
 }
 
-variable "cidr_block_for_subnets" {
+variable "cidr_block_for_private_subnets" {
   type = list(string)
-  default = ["10.0.1.0/24","10.0.2.0/24"]
-  description = "subnet CIDR for dev-vpc"
+  default = ["10.0.1.0/24","10.0.2.0/24","10.0.3.0/24","10.0.4.0/24","10.0.5.0/24"]
+  description = "subnet CIDR for private subnet dev-vpc"
 }
 
+variable "cidr_block_for_public_subnets" {
+  type = list(string)
+  default = ["10.0.6.0/24","10.0.7.0/24"]
+  description = "subnet CIDR for public subnet dev-vpc"
+}
 variable "map_public_ip" {
  type= bool
  default = true

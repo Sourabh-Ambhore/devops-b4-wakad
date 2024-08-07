@@ -7,11 +7,11 @@ output "igw" {
   value = aws_internet_gateway.igw-for-dev-vpc
 }
 
-output "subnets" {
-  value = aws_subnet.public_subnet
+# output "subnets" {
+#   value = aws_subnet.public_subnet
   
-}
+# }
 
-output "subnet_private" {
-  value = aws_subnet.private_subnet
-}
+# output "subnet_private" {
+#   value = aws_subnet.private_subnet
+# }
