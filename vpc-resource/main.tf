@@ -3,21 +3,21 @@ resource "aws_vpc" "vpc_for_dev" {
   instance_tenancy = var.instance_tenancy
 
   tags = merge(var.additional_tags,
-  {
-    Name = "${var.company_name}-${var.region}-${var.env.0}-vpc"
-  }
-              )
+    {
+      Name = "${var.company_name}-${var.region}-${var.env.0}-vpc"
+    }
+  )
 }
 
 resource "aws_internet_gateway" "igw-for-dev-vpc" {
   vpc_id = aws_vpc.vpc_for_dev.id
 
   tags = merge(var.additional_tags,
-  {
-    #Name = "${var.company_name}-${var.region}-${var.env.0}-IGW"
-    Name  = format("%s-%s-%s-IGW",var.company_name,var.region,var.env.0)
-  }
-               )
+    {
+      #Name = "${var.company_name}-${var.region}-${var.env.0}-IGW"
+      Name = format("%s-%s-%s-IGW", var.company_name, var.region, var.env.0)
+    }
+  )
 }
 
 resource "aws_subnet" "public_subnet" {
@@ -28,19 +28,19 @@ resource "aws_subnet" "public_subnet" {
   map_public_ip_on_launch = var.map_public_ip
 
   tags = {
-    Name = "public-subnet-${count.index+1}"
+    Name = "public-subnet-${count.index + 1}"
   }
 }
 
 resource "aws_subnet" "private_subnet" {
-  vpc_id     = aws_vpc.vpc_for_dev.id
-  count      = length(var.cidr_block_for_private_subnets)
-  cidr_block = var.cidr_block_for_private_subnets[count.index]
+  vpc_id            = aws_vpc.vpc_for_dev.id
+  count             = length(var.cidr_block_for_private_subnets)
+  cidr_block        = var.cidr_block_for_private_subnets[count.index]
   availability_zone = element(var.az, count.index)
-    tags = merge(
-    { Name = "private-subnet-test-${count.index+1}" }, 
+  tags = merge(
+    { Name = "private-subnet-test-${count.index + 1}" },
     var.additional_tags
   )
-  
+
 }
 

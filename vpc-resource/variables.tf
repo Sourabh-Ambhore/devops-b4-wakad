@@ -60,14 +60,14 @@ variable "company_name" {
   description = "name of company"
 }
 variable "region" {
-  type = string
-  default = "ap-south-1"
+  type        = string
+  default     = "ap-south-1"
   description = "region of infra"
 }
 
 variable "az" {
   type        = list(string)
-  default     = ["ap-south-1a", "ap-south-1b","ap-south-1c"]
+  default     = ["ap-south-1a", "ap-south-1b", "ap-south-1c"]
   description = "name of env"
 }
 
