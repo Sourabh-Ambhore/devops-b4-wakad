@@ -22,12 +22,6 @@ variable "igw_for_dev_vpc" {
   description = "interet gateway for dev-vpc"
 }
 
-variable "cidr_block_for_private_subnets" {
-  type        = list(string)
-  default     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24", "10.0.4.0/24", "10.0.5.0/24"]
-  description = "subnet CIDR for private subnet dev-vpc"
-}
-
 variable "cidr_block_for_public_subnets" {
   type        = list(string)
   default     = ["10.0.6.0/24", "10.0.7.0/24"]
@@ -69,4 +63,16 @@ variable "region" {
   type = string
   default = "ap-south-1"
   description = "region of infra"
+}
+
+variable "az" {
+  type        = list(string)
+  default     = ["ap-south-1a", "ap-south-1b","ap-south-1c"]
+  description = "name of env"
+}
+
+variable "cidr_block_for_private_subnets" {
+  type        = list(string)
+  default     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24", "10.0.4.0/24", "10.0.5.0/24"]
+  description = "subnet CIDR for private subnet dev-vpc"
 }
