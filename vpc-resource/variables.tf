@@ -53,3 +53,20 @@ variable "additional_tags" {
     country      = "india"
   }
 }
+
+variable "env" {
+  type        = list(string)
+  default     = ["dev", "prod"]
+  description = "name of env"
+}
+
+variable "company_name" {
+  type        = string
+  default     = "cloudblitz"
+  description = "name of company"
+}
+variable "region" {
+  type = string
+  default = "ap-south-1"
+  description = "region of infra"
+}
