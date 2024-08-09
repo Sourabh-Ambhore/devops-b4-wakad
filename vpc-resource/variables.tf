@@ -76,3 +76,14 @@ variable "cidr_block_for_private_subnets" {
   default     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24", "10.0.4.0/24", "10.0.5.0/24"]
   description = "subnet CIDR for private subnet dev-vpc"
 }
+
+variable "eip_for_nat" {
+  type = string
+  default = "vpc"
+  description = "Elastic IP for NAT gateway"
+}
+
+variable "nat_gateway" {
+  type = string
+  default = "nat for dev vpc"  
+}
