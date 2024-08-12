@@ -32,6 +32,8 @@ resource "aws_subnet" "public_subnet" {
   }
 }
 
+
+
 resource "aws_subnet" "private_subnet" {
   vpc_id            = aws_vpc.vpc_for_dev.id
   count             = length(var.cidr_block_for_private_subnets)
@@ -118,6 +120,8 @@ resource "aws_route_table_association" "private_subnet_association4" {
   subnet_id      = aws_subnet.private_subnet.4.id
   route_table_id = aws_route_table.private_rt_for_dev_vpc.id
 }
+
+
 
 
 
